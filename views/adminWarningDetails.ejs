@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Warning Details | AI HR System</title>
+  <title>FairWork | Warning Details</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -16,54 +16,96 @@
 </head>
 <body class="min-h-screen bg-white text-gray-900 leading-relaxed">
 
-  <!-- Top Banner -->
   <div class="bg-black text-white text-center py-2 text-sm">
-    <p>It’s GO time for generative AI HR assistance — Try Logo Name AI</p>
+   <p>It’s Decision Time for Fairer Workplaces — Try FairWork AI Today</p>
   </div>
-  <!-- Navbar -->
       <% if (userRole === 'admin') { %>
-  <nav class="bg-white  px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center space-x-6">
-      <img src="/images/image1.jpeg" alt="Logo" class="h-10 w-auto" />
-      <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
-      <a href="/admin/managers?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">All Managers</a>
-      <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
-      <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
-    </div>
+<nav class="bg-white px-6 py-4">
+  <div class="flex items-center justify-between">
     <div class="flex items-center space-x-4">
+      <img src="/images/image1.jpeg" alt="Logo" class="h-10 w-auto" />
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
+        <a href="/admin/managers?token=<%= token %>" class="text-purple-800 font-semibold hover:underline">All Managers</a>
+        <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
+        <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-4">
       <span class="text-gray-700">Welcome Admin: <%= username %></span>
       <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-black transition flex items-center gap-2">
         <i class="fas fa-sign-out-alt"></i> Logout
       </a>
     </div>
-  </nav>
+
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mt-4 hidden md:hidden">
+    <div class="flex flex-col space-y-3">
+      <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
+      <a href="/admin/managers?token=<%= token %>" class="text-purple-800 font-semibold hover:underline">All Managers</a>
+      <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
+      <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
+      <hr />
+      <span class="text-gray-700">Welcome Admin: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-black transition flex items-center gap-2 w-max">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>
       <% } else if (userRole === 'manager') { %>
-    <nav class="bg-white px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-6">
-        <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
-        <a href="/manager/home?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Dashboard
-        </a>
-        <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Profile
-        </a>
-        <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Support
-        </a>
-        <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Contact Us
-        </a>
+<nav class="bg-white px-6 py-4">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/manager/home?token=<%= token %>" class="text-purple-800 font-semibold hover:text-gray-700 transition">Dashboard</a>
+        <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Profile</a>
+        <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Support</a>
+        <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Contact Us</a>
       </div>
-      <div class="flex items-center space-x-4">
-        <span class="text-gray-700">Welcome Manager: <%= username %></span>
-        <a
-          href="/"
-          class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition"
-        >
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-      </div>
-    </nav>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-4">
+      <span class="text-gray-700">Welcome Manager: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+
+    <div class="md:hidden">
+      <button id="menu-toggle-manager" class="text-gray-700 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu-manager" class="mt-4 hidden md:hidden">
+    <div class="flex flex-col space-y-3">
+      <a href="/manager/home?token=<%= token %>" class="text-purple-800 font-semibold hover:text-gray-700 transition">Dashboard</a>
+      <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Profile</a>
+      <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Support</a>
+      <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Contact Us</a>
+      <hr />
+      <span class="text-gray-700">Welcome Manager: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition w-max">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>
+
         <% } %>
   <main class="max-w-3xl mx-auto px-6 py-10 bg-white">
     <div class="mb-6">
@@ -86,7 +128,6 @@
       <p><strong>Suggested Action:</strong> <%= warning.suggestedAction.replace(/\*/g, '').trim() %></p>
     </div>
 
-    <!-- Feedback Section -->
            <% if (userRole === 'admin') { %>
     <form 
       action="/admin/warning/<%= warning._id %>/feedback?token=<%= token %>" 
@@ -113,10 +154,23 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="mt-auto py-6 text-center text-sm text-gray-500">
     <p>Powered by <strong class="text-gray-700">Esgela Coding Team</strong> — Founder: Onwabe Zibeke</p>
     <p>Email: zibekeonwabe@gmail.com</p>
   </footer>
 </body>
+<script>
+  const menuToggleManager = document.getElementById('menu-toggle-manager');
+  const mobileMenuManager = document.getElementById('mobile-menu-manager');
+  menuToggleManager.addEventListener('click', () => {
+    mobileMenuManager.classList.toggle('hidden');
+  });
+</script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
 </html>

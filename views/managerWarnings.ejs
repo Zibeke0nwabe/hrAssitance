@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><%= username %>'s Warnings | AI HR System</title>
+  <title>FairWork | <%= username %>'s Warnings</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -16,61 +16,71 @@
 </head>
 <body class="min-h-screen bg-white text-gray-900 flex flex-col">
   <div class="bg-black text-white text-center py-2 text-sm">
-    <p>Generative AI for HR management — Try Logo Name AI</p>
+    <p>It’s Decision Time for Fairer Workplaces — Try FairWork AI Today</p>
+  </div>
+<nav class="bg-white px-6 py-4">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/manager/home?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Dashboard</a>
+        <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Profile</a>
+        <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Support</a>
+        <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-4">
+      <span class="text-gray-700">Welcome Manager: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+
+    <div class="md:hidden">
+      <button id="menu-toggle-manager" class="text-gray-700 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-    <nav class="bg-white px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-6">
-        <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
-        <a href="/manager/home?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Dashboard
-        </a>
-        <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Profile
-        </a>
-        <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Support
-        </a>
-        <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
-          Contact Us
-        </a>
-      </div>
-      <div class="flex items-center space-x-4">
-        <span class="text-gray-700">Welcome Manager: <%= username %></span>
-        <a
-          href="/"
-          class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition"
-        >
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-      </div>
-    </nav>
-  <!-- Main Section -->
+  <div id="mobile-menu-manager" class="mt-4 hidden md:hidden">
+    <div class="flex flex-col space-y-3">
+      <a href="/manager/home?token=<%= token %>" class="text-purple-800 font-semibold hover:text-gray-700 transition">Dashboard</a>
+      <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Profile</a>
+      <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Support</a>
+      <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Contact Us</a>
+      <hr />
+      <span class="text-gray-700">Welcome Manager: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition w-max">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>
   <main class="max-w-6xl mx-auto px-6 py-10 w-full">
     <h2 class="text-2xl font-bold mb-6 text-purple-800 text-center"><%= username %>'s Submitted Warnings</h2>
-
-    <!-- Search -->
     <form action="/manager/warnings" method="GET" class="mb-8 max-w-3xl mx-auto">
       <input type="hidden" name="token" value="<%= token %>" />
-      <div class="flex gap-4 items-center">
-        <input
-          type="text"
-          name="search"
-          value="<%= search %>"
-          placeholder="Search by employee name..."
-          class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-        />
-        <button
-          type="submit"
-          class="bg-purple-700 text-white px-5 py-3 rounded-lg hover:bg-purple-900 transition"
-        >
-          <i class="fas fa-search mr-1"></i> Search
-        </button>
-      </div>
-    </form>
+<div class="flex flex-col sm:flex-row gap-2 sm:gap-1 items-stretch sm:items-center w-full">
+  <input
+    type="text"
+    name="search"
+    value="<%= search %>"
+    placeholder="Search by employee name..."
+    class="w-full sm:flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+  />
+  <button
+    type="submit"
+    class="w-full sm:w-auto bg-purple-700 text-white px-5 py-3 rounded-lg hover:bg-purple-900 transition"
+  >
+    <i class="fas fa-search mr-1"></i> Search
+  </button>
+</div>
 
-    <!-- Warnings List -->
-    <ul class="space-y-6 max-w-4xl mx-auto">
+    <ul class="space-y-6 pt-8">
       <% warnings.forEach(w => { %>
         <li class="border border-gray-200 p-5 rounded-xl">
           <div class="flex flex-col md:flex-row justify-between mb-4">
@@ -94,9 +104,6 @@
           </a>
         </li>
       <% }) %>
-    </ul>
-
-    <!-- Pagination -->
     <div class="flex justify-between items-center mt-10 text-sm text-gray-700 max-w-4xl mx-auto">
       <% if (currentPage > 1) { %>
         <a href="/manager/warnings?token=<%= token %>&search=<%= search %>&page=<%= currentPage - 1 %>" class="text-purple-700 hover:underline">&larr; Previous</a>
@@ -109,11 +116,17 @@
       <% } else { %><span></span><% } %>
     </div>
   </main>
-
-  <!-- Footer -->
   <footer class="mt-auto py-6 text-center text-sm text-gray-500 border-t">
     <p>Powered by <strong class="text-gray-700">Esgela Coding Team</strong> — Founder: Onwabe Zibeke</p>
     <p>Email: zibekeonwabe@gmail.com</p>
   </footer>
 </body>
+<script>
+  const menuToggleManager = document.getElementById('menu-toggle-manager');
+  const mobileMenuManager = document.getElementById('mobile-menu-manager');
+  menuToggleManager.addEventListener('click', () => {
+    mobileMenuManager.classList.toggle('hidden');
+  });
+</script>
+
 </html>

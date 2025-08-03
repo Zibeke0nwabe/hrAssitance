@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin Panel | AI HR Warning System</title>
+  <title>FairWork | Admin Panel</title>
 
-  <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
@@ -18,25 +17,50 @@
 <body class="min-h-screen bg-white flex flex-col text-gray-800">
 
   <div class="bg-black text-white text-center py-2 text-sm">
-    <p>It’s GO time for generative AI HR assistance — Try Logo Name AI</p>
+    <p>It’s Decision Time for Fairer Workplaces — Try FairWork AI Today</p>
   </div>
-
-  <nav class="bg-white shadow px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center space-x-6">
-      <img src="/images/image1.jpeg" alt="Logo" class="h-10 w-auto" />
-      <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
-      <a href="/admin/managers?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">All Managers</a>
-      <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
-      <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
-    </div>
+<nav class="bg-white px-6 py-4">
+  <div class="flex items-center justify-between">
     <div class="flex items-center space-x-4">
+      <img src="/images/image1.jpeg" alt="Logo" class="h-10 w-auto" />
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
+        <a href="/admin/managers?token=<%= token %>" class="text-purple-800 font-semibold hover:underline">All Managers</a>
+        <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
+        <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-4">
       <span class="text-gray-700">Welcome Admin: <%= username %></span>
       <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-black transition flex items-center gap-2">
         <i class="fas fa-sign-out-alt"></i> Logout
       </a>
     </div>
-  </nav>
 
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mt-4 hidden md:hidden">
+    <div class="flex flex-col space-y-3">
+      <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
+      <a href="/admin/managers?token=<%= token %>" class="text-purple-800 font-semibold hover:underline">All Managers</a>
+      <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
+      <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
+      <hr />
+      <span class="text-gray-700">Welcome Admin: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-black transition flex items-center gap-2 w-max">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </div>
+</nav>
   <header class="max-w-7xl mx-auto px-6 py-8 text-center">
     <h2 class="text-3xl md:text-4xl font-bold">Welcome, <span class="text-purple-800"><%= username %></span></h2>
     <p class="mt-2 text-lg text-gray-600">Manage manager-submitted warnings and respond with HR feedback.</p>
@@ -84,7 +108,13 @@
     <p>Powered by <strong class="text-gray-700">Esgela Coding Team</strong> — Founder: Onwabe Zibeke</p>
     <p>Email: zibekeonwabe@gmail.com</p>
   </footer>
-
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
   <script>
     const searchInput = document.getElementById('searchInput');
     const warningItems = document.querySelectorAll('.warning-item');
