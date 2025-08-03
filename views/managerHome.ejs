@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Logo Name | AI HR Warning System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Top Banner -->
+    <div class="bg-black text-white text-center py-2">
+      <p>It's GO time for generative AI HR assistance — Try Logo Name AI</p>
+    </div>
+
+    <!-- Navbar -->
+      <nav class="bg-white shadow px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-6">
+          <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
+          <a href="/manager/home?token=<%= token %>" class="text-purple-800 font-semibold hover:text-gray-700 transition">
+            Dashboard
+          </a>
+          <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+            Profile
+          </a>
+          <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+            Support
+          </a>
+          <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+            Contact Us
+          </a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-700">Welcome Manager: <%= username %></span>
+          <a
+            href="/"
+            class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition"
+          >
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        </div>
+      </nav>
+<!--hero section -->
+    <section class="flex flex-col md:flex-row flex-grow bg-white">
+      <div
+        class="md:w-1/2 flex flex-col justify-center items-start py-2 px-10 space-y-6"
+      >
+        <h1 class="text-4xl md:text-5xl font-bold break-words">
+          AI That Champions <br/> Fair Work
+        </h1>
+        <p class="text-gray-700 max-w-md">
+          Our intelligent assistant reviews each warning instantly, flags concerns, and suggests actions. Final decisions 
+          stay with HR to ensure fairness 
+        </p>
+          <div class="flex gap-4">
+            <a
+              href="/manager/submit-warning?token=<%= token %>"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-purple-800 text-white font-semibold transition-colors duration-300 hover:bg-black"
+            >
+              New Warning
+            </a>
+            <a
+              href="/manager/warnings?token=<%= token %>"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-black font-semibold transition-colors duration-300 hover:bg-black hover:text-white"
+            >
+              View Warnings
+              <i class="fas fa-arrow-up"></i>
+            </a>
+          </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center items-center py-2 px-10">
+        <img
+          src="/images/image1.jpeg"
+          alt="AI System"
+          class="max-h-[400px] w-auto"
+        />
+      </div>
+    </section>
+    <!-- Developed By Section -->
+    <section class="mb-4 text-center flex flex-col items-center space-y-4">
+      <h2 class="text-gray-700 font-semibold text-lg">Powered by</h2>
+      <div class="flex flex-wrap space-x-6 justify-center items-center">
+        <img src="/images/esgela.jpg" alt="Esgela Logo" class="h-12 w-auto" />
+        <span class="font-bold text-gray-800">Esgela Coding Team</span>
+          <span class="font-semibold text-gray-700">Founder: Onwabe Zibeke</span>
+        <span class=" text-gray-700">Email: zibekeonwabe@gmail.com</span>
+      </div>
+    </section>
+  </body>
+</html>

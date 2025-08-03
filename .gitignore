@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Build/output folders
+public/uploads/
+dist/
+build/
+
+# Package manager files (optional to ignore if you want to commit dependencies)
+package-lock.json
+
+# VS Code settings (optional)
+.vscode/

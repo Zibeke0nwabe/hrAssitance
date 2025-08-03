@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warning Details | AI HR System</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 leading-relaxed">
+
+  <!-- Top Banner -->
+  <div class="bg-black text-white text-center py-2 text-sm">
+    <p>It’s GO time for generative AI HR assistance — Try Logo Name AI</p>
+  </div>
+  <!-- Navbar -->
+      <% if (userRole === 'admin') { %>
+  <nav class="bg-white  px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-6">
+      <img src="/images/image1.jpeg" alt="Logo" class="h-10 w-auto" />
+      <a href="/admin/register-manager?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Register Manager</a>
+      <a href="/admin/managers?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">All Managers</a>
+      <a href="/admin/reports?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Reports</a>
+      <a href="/admin/settings?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">Settings</a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="text-gray-700">Welcome Admin: <%= username %></span>
+      <a href="/" class="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-black transition flex items-center gap-2">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </nav>
+      <% } else if (userRole === 'manager') { %>
+    <nav class="bg-white px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-6">
+        <img src="/images/image1.jpeg" alt="Logo Name" class="h-12 w-auto" />
+        <a href="/manager/home?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+          Dashboard
+        </a>
+        <a href="/manager/profile?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+          Profile
+        </a>
+        <a href="/manager/support?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+          Support
+        </a>
+        <a href="/manager/contact?token=<%= token %>" class="text-gray-700 font-semibold hover:text-purple-800 transition">
+          Contact Us
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-700">Welcome Manager: <%= username %></span>
+        <a
+          href="/"
+          class="bg-purple-800 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black transition"
+        >
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </nav>
+        <% } %>
+  <main class="max-w-3xl mx-auto px-6 py-10 bg-white">
+    <div class="mb-6">
+      <% if (userRole === 'admin') { %>
+        <a href="/admin/home?token=<%= token %>" class="text-purple-800 font-medium hover:underline">
+          &larr; Back to Dashboard
+        </a>
+      <% } else if (userRole === 'manager') { %>
+        <a href="/manager/warnings?token=<%= token %>" class="text-purple-800 font-medium hover:underline">
+          &larr; Back to My Warnings
+        </a>
+      <% } %>
+    </div>
+    <div class="space-y-6 text-lg">
+      <p><strong>Employee:</strong> <%= warning.employeeName %></p>
+      <p><strong>Manager:</strong> <%= warning.manager.username %></p>
+      <p><strong>Warning Text:</strong> <%= warning.warningText %></p>
+      <p><strong>AI Verdict:</strong> <%= warning.aiVerdict.replace(/\*\*/g, '') %></p>
+      <p><strong>Explanation:</strong> <%= warning.aiExplanation.replace(/\*\*/g, '') %></p>
+      <p><strong>Suggested Action:</strong> <%= warning.suggestedAction.replace(/\*/g, '').trim() %></p>
+    </div>
+
+    <!-- Feedback Section -->
+           <% if (userRole === 'admin') { %>
+    <form 
+      action="/admin/warning/<%= warning._id %>/feedback?token=<%= token %>" 
+      method="POST" 
+      class="mt-10 space-y-4"
+    >
+      <label for="feedback" class="block text-lg font-medium text-gray-800">Admin Feedback:</label>
+      <textarea 
+        name="feedback" 
+        id="feedback" 
+        rows="4" 
+        class="w-full border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+      ><%= warning.adminFeedback || '' %></textarea>
+      
+      <button 
+        type="submit" 
+        class="bg-purple-700 text-white px-6 py-3 rounded-lg hover:bg-purple-900 transition font-semibold"
+      >
+        <i class="fas fa-paper-plane mr-2"></i>Submit Feedback
+      </button>
+    </form>
+      <% } else if (userRole === 'manager') { %>
+      <% } %>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto py-6 text-center text-sm text-gray-500">
+    <p>Powered by <strong class="text-gray-700">Esgela Coding Team</strong> — Founder: Onwabe Zibeke</p>
+    <p>Email: zibekeonwabe@gmail.com</p>
+  </footer>
+</body>
+</html>
